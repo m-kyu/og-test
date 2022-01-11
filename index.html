@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- kakao-login.html -->
+   
+    <a href="login.html">로그인</a>
+    
+    <!-- <a onclick="kakaoLogout();">로그아웃</a> -->
+
+    <a href="https://kauth.kakao.com/oauth/logout?client_id=c5783dd1dac2ccae424f8bd85202b4b9&logout_redirect_uri=https://m-kyu.github.io/og-test/index.html">로그아웃</a>
+    
+    <a href="https://developers.kakao.com/logout">테스트 로그아웃</a>
+    
+    
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script type="text/javascript">
+        Kakao.init('c5783dd1dac2ccae424f8bd85202b4b9');
+
+        //로그인
+        // Kakao.Auth.authorize({
+        //     redirectUri : 'http://127.0.0.1:5500/api/info.html'
+        // })
+
+      
+
+        function kakaoLogout() {
+            if (Kakao.Auth.getAccessToken()) {
+            Kakao.API.request({
+                url: '/v1/user/unlink',
+                success: function (response) {
+                    console.log(response)
+                },
+                fail: function (error) {
+                    console.log(error)
+                },
+            })
+            Kakao.Auth.setAccessToken(undefined)
+            }
+        }  
+    </script>
+    
+
+</body>
+</html>
