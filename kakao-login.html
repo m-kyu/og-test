@@ -78,11 +78,11 @@
             
 
             if (!Kakao.Auth.getAccessToken()) {
-                // alert('Not logged in.')
+                console.log('Not logged in.')
                 return
             }
             Kakao.Auth.logout(function() {
-                // alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken())
+                console.log('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken());
                 
             })
             
